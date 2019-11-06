@@ -1,6 +1,7 @@
-import torch
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import torch.nn as nn
-import torch.nn.functional as F
 
 
 class QNetwork(nn.Module):

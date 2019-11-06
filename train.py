@@ -111,7 +111,7 @@ def plot_scores(scores, running_window_size=100, success_thresh=13.):
     ra_scores, rm_scores = [], []
     success_x, success_y = None, None
     success = False
-    for idx, score in enumerate(scores):
+    for idx in range(len(scores)):
         ra_score = np.mean(scores[max(0, idx - running_window_size + 1): idx + 1])
         ra_scores.append(ra_score)
         rm_scores.append(np.median(scores[max(0, idx - running_window_size + 1): idx + 1]))

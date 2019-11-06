@@ -73,11 +73,11 @@ def main(args):
                   device=args.device)
 
     # Load checkpoint
-    model_folder = Path(args.model_folder)
-    if model_folder.is_dir() and model_folder.joinpath('model.pt').is_file():
-        state_dict = torch.load(model_folder.joinpath('model.pt'), map_location=args.device)
+    checkpoint = Path(args.checkpoint)
+    if checkpoint.is_file():
+        state_dict = torch.load(checkpoint, map_location=args.device)
     else:
-        raise FileNotFoundError(f"unable to locate {args.checkpoint}/model.pt")
+        raise FileNotFoundError(f"unable to locate {args.checkpoint}")
     agent.qnetwork_local.load_state_dict(state_dict)
 
     # Evaluation run
@@ -98,8 +98,8 @@ if __name__ == "__main__":
     # Input / Output
     parser.add_argument('--env-path', default='./Banana_Linux/Banana.x86_64',
                         help='path to executable unity environment')
-    parser.add_argument('--model-folder', default='./outputs', type=str,
-                        help='folder where model checkpoint is located')
+    parser.add_argument('--checkpoint', default='./outputs/model.pt', type=str,
+                        help='model state dict to load')
     # Architecture
     parser.add_argument('--lin-feats', default=64, type=int, help='number of nodes in hidden layers')
     parser.add_argument('--nb-hidden', default=1, type=int, help='number of hidden layers')

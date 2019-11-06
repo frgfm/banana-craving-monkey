@@ -3,15 +3,34 @@
 
 This repository is an implementation of DQN agent for the navigation project of Udacity Deep Reinforcement Learning nanodegree, in the banana collection game provided by unity.
 
+![banana-gif](<https://video.udacity-data.com/topher/2018/June/5b1ab4b0_banana/banana.gif>)
+
 
 
 ## Table of Contents
 
+- [Environment](#environment)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
+- [Credits](#credits)
 - [License](#license)
+
+
+
+## Environment
+
+A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana. Thus, the goal of your agent is to collect as many yellow bananas as possible while avoiding blue bananas.
+
+The state space has 37 dimensions and contains the agent's velocity, along with ray-based perception of objects around the agent's forward direction. Given this information, the agent has to learn how to best select actions. Four discrete actions are available, corresponding to:
+
+- **0** - move forward.
+- **1** - move backward.
+- **2** - turn left.
+- **3** - turn right.
+
+The task is episodic, and in order to solve the environment, your agent must get an average score of +13 over 100 consecutive episodes.
 
 
 
@@ -54,14 +73,6 @@ wget https://github.com/frgfm/banana-craving-monkey/releases/download/v0.1.0/dqn
 
 ## Usage
 
-### Environment rules
-
-This build is similar to the Unity Banana collector discrete environment:
-
-- 37 states
-- 4 actions
-- solving condition: the agent reaches an average score of 13.0 over 100 episodes
-
 ### Training
 
 All training arguments can be found using the `--help` flag:
@@ -83,6 +94,17 @@ You can use an existing model's checkpoint to evaluate your agent as follows:
 ```shell
 python evaluate.py --checkpoint ./dqn_fixed_target.pt
 ```
+
+
+
+## Credits
+
+This implementation is vastly based on the following papers:
+
+- [DQN paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
+- [Double DQN](https://arxiv.org/abs/1509.06461)
+- [Dueling DQN](https://arxiv.org/abs/1511.06581)
+- [Prioritized Experience replay](https://arxiv.org/abs/1511.05952)
 
 
 

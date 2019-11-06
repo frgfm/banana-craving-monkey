@@ -29,7 +29,7 @@ class Agent():
     """
 
     def __init__(self, state_size, action_size, train=False, device=None,
-                 lin_feats=64, bn=False, dropout_prob=0, buffer_size=1e5,
+                 lin_feats=64, bn=False, dropout_prob=0., buffer_size=1e5,
                  batch_size=64, lr=5e-4, gamma=0.99, tau=1e-3, update_freq=4):
 
         self.state_size = state_size
@@ -59,6 +59,8 @@ class Agent():
             self.memory = ReplayBuffer(action_size, buffer_size, self.bs, self.device)
             # Initialize time step (for updating every UPDATE_EVERY steps)
             self.t_step = 0
+        else:
+            self.qnetwork_local.eval()
 
     def act(self, state, eps=0.):
         """Returns actions for given state as per current policy.

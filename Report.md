@@ -4,7 +4,7 @@ This report details the experiments the repo owner has made to solve the navigat
 
 
 
-## Learning algorithm
+## Learning algorithm
 
 In order to have room for improvements, the agent was trained using a fixed Q-target with experience replay. Having the parameter update from Temporal Difference-learning,
 $$
@@ -52,11 +52,11 @@ In order to speed up to training, epsilon decay was decreased from `0.99` to `0.
 
 Using the training setup described in the previous section, the training script is able to yield a consistent solving of the environment under 300 episodes. Below are the score statistics of the training run:
 
-![dqn_fixed_target_scores](/home/fg/Documents/Udacity/banana-craving-monkey/static/images/dqn_fixed_target_scores.png)
+![dqn_fixed_target_scores](static/images/dqn_fixed_target_scores.png)
 
 Now, the evaluation script uses the state dictionary of the trained agent to evaluate it in a non-training environment and the overall score remains consistently above `+13.0`, as shown in the evaluation run below:
 
-![dqn_fixed_target_eval](/home/fg/Documents/Udacity/banana-craving-monkey/static/images/dqn_fixed_target_eval.gif)
+![dqn_fixed_target_eval](static/images/dqn_fixed_target_eval.gif)
 
 Trained model parameters can be downloaded from this repository [release attachments](https://github.com/frgfm/banana-craving-monkey/tags).
 
